@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>vd2(Arguments)(JS)</title>
+		<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8"> 
+		
+	</head>
+	<body>
+		<p id="demo"></p>
+		<script>
+			var anArrayLikeObj = {0:"Martin",1:78,2:67,3:["Letta","Marieta","Pauline"],length:4};
+			<!-- console.log(anArrayLikeObj.push(3)); -->
+			var newArray = Array.prototype.slice.call(anArrayLikeObj,1,2); // invloking global so pass to call function this object is anArrayLikeObj.
+			console.log(newArray);
+			
+			console.log(newArray.indexOf(8)); // equal -1 if false 
+											  // equal 1 if true	
+			//search for "Martin" in the array-like object
+			console.log(Array.prototype.indexOf.call(anArrayLikeObj,"Martin") === -1 ? false : true);
+		</script>
+		
+	</body>
+</html>
