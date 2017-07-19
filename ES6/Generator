@@ -1,0 +1,38 @@
+/**
+ * Created by ad on 7/18/2017.
+ */
+var a = [1,2,{name : "tuan",age : 21}];
+
+function* showOut() {
+    yield* a;
+}
+var copy = showOut();
+// console.log(copy.next().value);
+// console.log(copy.next().value);
+// console.log(copy.next().value);
+
+function* iterTree(tree){
+    if (Array.isArray(tree)){
+        for (let i = 0; i < tree.length; i++){
+            yield* iterTree(tree[i]);  // recursion;
+            //inner node
+        }
+    }else{
+        //leaf
+        yield tree;
+    }
+}
+const tree = ['a',['b','c'],['d','e']];
+for(let x of iterTree(tree)){
+    //console.log(x);
+}
+
+function* iterate(){   //When execute generator, generator does not execute its only immediately, an iterator object is returned.
+    //return 3;       // 'return' will not yield any more values.
+
+    var tree = ['a',['b','c'],['d','e']];
+    yield* iterTree(tree);
+}
+var hehe = iterate();
+console.log(hehe.next().value);   // next() executed function's body until the first yield empression.
+
